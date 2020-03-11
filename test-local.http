@@ -1,0 +1,16 @@
+## LOCAL SERVER
+
+### status is
+GET http://localhost:8080/status
+
+### public chat room is
+GET http://localhost:8080/public/raspi/chat/
+
+
+## REMOTE SERVER
+
+### status is
+GET https://livecodecreator.herokuapp.com/status
+
+### public chat room is
+GET https://livecodecreator.herokuapp.com/public/raspi/chat/

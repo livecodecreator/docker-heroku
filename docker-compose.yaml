@@ -1,0 +1,19 @@
+version: "3.7"
+services:
+
+  workspace:
+    tty: true
+    build:
+      context: .
+    expose:
+      - 80
+    ports:
+      - 8080:80
+    environment:
+      PORT: 80
+      RASPI_TOKEN: ${RASPI_TOKEN:-}
+      SERVICE_TOKEN: ${SERVICE_TOKEN:-}
+      MACKEREL_API_KEY: ${MACKEREL_API_KEY:-}
+      SLACK_TOKEN: ${SLACK_TOKEN:-}
+      SLACK_CHANNEL: ${SLACK_CHANNEL:-}
+      SLACK_VERIFICATION_TOKEN: ${SLACK_VERIFICATION_TOKEN:-}

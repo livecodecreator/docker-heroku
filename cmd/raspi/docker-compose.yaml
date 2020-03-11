@@ -1,0 +1,55 @@
+version: "3.3"
+services:
+
+  workspace:
+    tty: true
+    restart: always
+    build: .
+    entrypoint: bash
+    working_dir: /workspace
+    volumes:
+      - .:/workspace
+      - /var/run/docker.sock:/var/run/docker.sock
+
+  chat:
+    tty: true
+    restart: always
+    build: .
+    entrypoint: /workspace/chat.py
+    working_dir: /workspace
+    volumes:
+      - .:/workspace
+
+  status:
+    tty: true
+    restart: always
+    build: .
+    entrypoint: /workspace/status.py
+    working_dir: /workspace
+    volumes:
+      - .:/workspace
+    environment:
+      RASPI_TOKEN: $RASPI_TOKEN
+
+  command:
+    tty: true
+    restart: always
+    build: .
+    entrypoint: /workspace/command.py
+    working_dir: /workspace
+    volumes:
+      - .:/workspace
+    environment:
+      RASPI_TOKEN: $RASPI_TOKEN
+      RASPI_SLACK: $RASPI_SLACK
+
+  # lchika:
+  #   tty: true
+  #   restart: always
+  #   build: .
+  #   entrypoint: /workspace/lchika.py
+  #   working_dir: /workspace
+  #   devices:
+  #     - /dev/gpiomem
+  #   volumes:
+  #     - .:/workspace
